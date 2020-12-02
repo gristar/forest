@@ -41,7 +41,9 @@
         </a-card-grid>
       </a-card>
     </div>
-    <p>总计：{{ total }}</p>
+    <p>
+      总计：<span class="green total">￥{{ total }}</span>
+    </p>
     <div class="fl-btm">
       <a-textarea v-model:value="note" placeholder="备注" auto-size />
       <div class="fl mgt10">
@@ -67,6 +69,7 @@ import {
   UserOutlined,
   CloseCircleOutlined,
 } from "@ant-design/icons-vue";
+import { message } from "ant-design-vue";
 export default {
   name: "Saves",
   components: {
@@ -107,8 +110,17 @@ export default {
       this.save(dt);
     },
     reduce() {
+      if (this.total - this.num < 0) {
+        message.warning("减少后金额少于 0");
+        return;
+      }
       const dt = JSON.parse(localStorage.getItem("money") || "[]");
-      dt.push({ val: -this.num, date: new Date(), id: Math.random() });
+      dt.push({
+        val: -this.num,
+        date: new Date(),
+        id: Math.random(),
+        note: this.note,
+      });
       this.save(dt);
     },
     getMoney() {
@@ -116,6 +128,10 @@ export default {
     },
     del(id) {
       const item = this.list.find((item) => item.id === id);
+      if (this.total - item.val < 0) {
+        message.warning("删除后金额少于 0");
+        return;
+      }
       item.isDel = true;
       item.date = new Date();
       item.note = this.note;
@@ -195,5 +211,16 @@ export default {
   text-overflow: ellipsis;
   overflow: hidden;
   width: 100%;
+}
+.lg-txt {
+  font-size: 18px;
+  font-weight: bolder;
+}
+.total {
+  font-weight: bold;
+  color: orange;
+  text-shadow: 0 0 1px currentColor, -1px -1px 1px #030, 0 -1px 1px #030,
+    1px -1px 1px #030, 1px 0 1px #030, 1px 1px 1px #030, 0 1px 1px #030,
+    -1px 1px 1px #030, -1px 0 1px #030;
 }
 </style>
