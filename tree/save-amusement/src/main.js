@@ -4,12 +4,13 @@ import Root from './App.vue'
 
 const app = createApp(Root)
 
-import { Button, Breadcrumb, InputNumber, Card, CardGrid, Space } from 'ant-design-vue';
+import { Button, Breadcrumb, InputNumber, Card, Space, Input, Tooltip } from 'ant-design-vue';
 app.use(Button);
 app.use(Breadcrumb);
 app.use(InputNumber);
 app.use(Card);
-app.use(CardGrid);
 app.use(Space)
+app.use(Input)
+app.use(Tooltip)
 
 app.mount('#app')

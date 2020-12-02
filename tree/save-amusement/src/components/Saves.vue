@@ -17,36 +17,62 @@
         <a-card-grid
           v-for="(item, i) in list"
           :key="i"
-          style="width: 25%; text-align: center"
+          class="list-item"
+          :class="item.isDel ? 'sm-rd-txt' : ''"
         >
-          <div class="main-txt">￥{{ item.val }}</div>
-          <div class="sm-rd-txt">
+          <div @click="del(item.id)" v-if="!item.isDel" class="rt">
+            <CloseCircleOutlined />
+          </div>
+          <div class="main-txt">
+            <span :class="item.val <= 0 ? 'red' : 'green'"
+              >￥{{ item.val }}</span
+            >
+          </div>
+          <div class="small-txt">
             {{ new Date(item.date).toLocaleTimeString() }}
           </div>
+          <div v-if="item.isDel">已删除</div>
+          <a-tooltip placement="topRight" v-if="item.note">
+            <template #title>
+              <span>{{ item.note }}</span>
+            </template>
+            <a-button size="small">{{ item.note }}</a-button>
+          </a-tooltip>
         </a-card-grid>
       </a-card>
     </div>
     <p>总计：{{ total }}</p>
     <div class="fl-btm">
-      <a-input-number
-        v-model:value="num"
-        :min="1"
-        :max="1000"
-        @change="onChange"
-        class="mg-r-10"
-      />
-      <a-button type="primary" @click="save"> + 增加 </a-button>
+      <a-textarea v-model:value="note" placeholder="备注" auto-size />
+      <div class="fl mgt10">
+        <a-input-number
+          v-model:value="num"
+          :min="1"
+          :max="1000"
+          @change="onChange"
+          class="mg-r-10"
+        />
+        <a-button type="primary" @click="add" class="mg-r-10">
+          + 增加
+        </a-button>
+        <a-button type="danger" @click="reduce"> - 减少 </a-button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { HomeOutlined, UserOutlined } from "@ant-design/icons-vue";
+import {
+  HomeOutlined,
+  UserOutlined,
+  CloseCircleOutlined,
+} from "@ant-design/icons-vue";
 export default {
   name: "Saves",
   components: {
     HomeOutlined,
     UserOutlined,
+    CloseCircleOutlined,
   },
   props: {
     msg: String,
@@ -55,28 +81,50 @@ export default {
     return {
       num: 1,
       list: [],
+      note: "",
     };
   },
   computed: {
     total() {
-      console.log(this.list);
-      return this.list.length > 0
-        ? this.list.map((item) => item.val).reduce((a, b) => a + b)
-        : 0;
+      const dt = this.list
+        .filter((item) => !item.isDel)
+        .map((item) => item.val);
+      return dt.length > 0 ? dt.reduce((a, b) => a + b) : 0;
     },
   },
   mounted() {
     this.getMoney();
   },
   methods: {
-    save() {
+    add() {
       const dt = JSON.parse(localStorage.getItem("money") || "[]");
-      dt.push({ val: this.num, date: new Date() });
-      localStorage.setItem("money", JSON.stringify(dt));
-      this.list = dt;
+      dt.push({
+        val: this.num,
+        date: new Date(),
+        id: Math.random(),
+        note: this.note,
+      });
+      this.save(dt);
+    },
+    reduce() {
+      const dt = JSON.parse(localStorage.getItem("money") || "[]");
+      dt.push({ val: -this.num, date: new Date(), id: Math.random() });
+      this.save(dt);
     },
     getMoney() {
       this.list = JSON.parse(localStorage.getItem("money") || "[]");
+    },
+    del(id) {
+      const item = this.list.find((item) => item.id === id);
+      item.isDel = true;
+      item.date = new Date();
+      item.note = this.note;
+      this.save(this.list);
+    },
+    save(dt) {
+      localStorage.setItem("money", JSON.stringify(dt));
+      this.list = dt;
+      this.note = "";
     },
   },
 };
@@ -88,17 +136,64 @@ export default {
   left: 50%;
   transform: translateX(-50%);
 }
+.fl {
+  display: flex;
+}
 .mg-r-10 {
   margin-right: 10px;
 }
 .sm-rd-txt {
   font-size: 12px;
-  color: #d1c5c5;
+  color: #d1c5c5 !important;
+  .red {
+    color: #d1c5c5 !important;
+  }
+  .green {
+    color: #d1c5c5 !important;
+  }
 }
 .ant-card-grid {
   padding: 5px;
 }
 .main-txt {
   font-weight: bold;
+}
+.rt {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
+::v-deep .ant-card-body {
+  display: flex;
+  flex-wrap: wrap;
+}
+.small-txt {
+  font-size: 12px;
+}
+.list-item {
+  width: 25%;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+.mgt10 {
+  margin-top: 10px;
+}
+.ant-btn-sm {
+  font-size: 12px;
+  border: 0;
+}
+::v-deep .ant-btn-sm span {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
 }
 </style>
