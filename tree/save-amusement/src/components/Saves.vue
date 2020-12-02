@@ -45,7 +45,16 @@
       总计：<span class="green total">￥{{ total }}</span>
     </p>
     <div class="fl-btm">
-      <a-textarea v-model:value="note" placeholder="备注" auto-size />
+      <a-button
+        class="mg-r-10 mgt10"
+        v-for="(item, index) in auto"
+        :key="index"
+        @click="autoSet(item)"
+        >{{ item.note }}</a-button
+      >
+      <div class="mgt10">
+        <a-textarea v-model:value="note" placeholder="备注" auto-size />
+      </div>
       <div class="fl mgt10">
         <a-input-number
           v-model:value="num"
@@ -85,6 +94,12 @@ export default {
       num: 1,
       list: [],
       note: "",
+      auto: [
+        { num: 8, note: "没有喝奶茶" },
+        { num: 40, note: "健身 40 分钟" },
+        { num: 25, note: "没有吃宵夜" },
+        { num: 1, note: "" },
+      ],
     };
   },
   computed: {
@@ -140,7 +155,12 @@ export default {
     save(dt) {
       localStorage.setItem("money", JSON.stringify(dt));
       this.list = dt;
+      this.num = 1;
       this.note = "";
+    },
+    autoSet(item) {
+      this.note = item.note;
+      this.num = item.num;
     },
   },
 };
@@ -151,6 +171,7 @@ export default {
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
+  text-align: left;
 }
 .fl {
   display: flex;
