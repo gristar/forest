@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/calendar/calendar",
+    "pages/memo/memo"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "宠物饲养工具",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#717171",
+    "selectedColor": "#3399FF",
+    "backgroundColor": "white",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/calendar/calendar",
+        "text": "日历",
+        "iconPath": "./image/icons/日历.png",
+        "selectedIconPath": "./image/icons/日历 (1).png"
+      },
+      {
+        "pagePath": "pages/memo/memo",
+        "text": "预约",
+        "iconPath": "./image/icons/预约.png",
+        "selectedIconPath": "./image/icons/预约 (1).png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "我的",
+        "iconPath": "./image/icons/我的.png",
+        "selectedIconPath": "./image/icons/我的 (1).png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}
