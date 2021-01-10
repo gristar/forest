@@ -24,7 +24,9 @@ Page({
     windowWidth: 0,
     limit: 10,
     diaryList: [],
-    modifyDiarys: false
+    modifyDiarys: false,
+    buttons: [{ text: '取消' }, { text: '确定' }],
+    isSearchInputShow: false
   },
   onShow: function () {
     // getList(this);
@@ -46,7 +48,7 @@ Page({
       modifyDiarys: ""
     })
   },
- 
+
   pullUpLoad: function (e) {
     var limit = that.data.limit + 2
     this.setData({
@@ -67,7 +69,7 @@ Page({
     //var date = event.detail.value.date;//new
     //var time = event.detail.value.time;//new
     //var appointment=date+""+time;//new
-    var appointment=event.detail.value.time;
+    var appointment = event.detail.value.time;
     if (!title) {
       common.showTip("标题不能为空", "loading");
     }
@@ -158,8 +160,8 @@ Page({
       modifyDiarys: true,
       nowTitle: nowTile,
       nowContent: nowContent,
-      nowTag:nowTag,//
-      nowAddress:nowAddress,//
+      nowTag: nowTag,//
+      nowAddress: nowAddress,//
       nowId: nowId
     })
   },
@@ -167,29 +169,28 @@ Page({
     var t = this;
     modify(t, e)
   },
-  showInput: function () {
+  searchInputShow: function () {
     this.setData({
-      inputShowed: true
+      isSearchInputShow: true
     });
   },
-  hideInput: function () {
+  searchInputHide: function () {
     this.setData({
-      inputVal: "",
-      inputShowed: false
+      searchInputVal: "",
+      isSearchInputShow: false
     });
     getList(this);
   },
-  clearInput: function () {
+  searchInputClear: function () {
     this.setData({
-      inputVal: ""
+      searchInputVal: ""
     });
     getList(this);
   },
   inputTyping: function (e) {
-    //搜索数据
     getList(this, e.detail.value);
     this.setData({
-      inputVal: e.detail.value
+      searchInputVal: e.detail.value
     });
   },
   closeAddLayer: function () {
@@ -197,14 +198,10 @@ Page({
       modifyDiarys: false
     })
   }
-
 })
 
-
-/*
-* 获取数据
-*/
 function getList(t, k) {
+  return;
   that = t;
   var Diary = Bmob.Object.extend("diary");
   var query = new Bmob.Query(Diary);

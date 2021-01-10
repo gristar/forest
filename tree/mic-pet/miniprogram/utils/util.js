@@ -15,15 +15,22 @@ function formatTime(date) {
     n = n.toString()
     return n[1] ? n : '0' + n
   }
-  function today(date){//显示今天的日
+  function today(date){
     return date.getDate();
   }
-  function curMonth(date) {//显示今天的月
+  function curMonth(date) {
     return date.getMonth() + 1;
   }
+  function curYear(date) {
+    return date.getFullYear();
+  }
+  function curYearMonthDay(date = new Date()) {
+    return [curYear(date), curMonth(date), today(date)].map(formatNumber).join('-')
+  }
   module.exports = {
-    formatTime: formatTime,
-    today: today,//显示今天的日
-    curMonth: curMonth//显示今天的月
+    formatTime,
+    today,
+    curMonth,
+    curYearMonthDay,
   }
   

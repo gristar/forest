@@ -1,9 +1,8 @@
 {
   "pages": [
+    "pages/memo/memo",
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/calendar/calendar",
-    "pages/memo/memo"
+    "pages/calendar/calendar"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -37,5 +36,9 @@
       }
     ]
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "useExtendedLib": {
+    "kbone": true,
+    "weui": true
+  }
 }

@@ -1,4 +1,4 @@
-@import 'style/weui.wxss';
+
 /**app.wxss**/
 .container {
   display: flex;
@@ -112,6 +112,9 @@ page {
 }
 .pink-color {
   color: #ff629a;
+}
+.main-theme-color {
+  color: #3399FF;
 }
 .white-color {
   color: #fff;

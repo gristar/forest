@@ -39,7 +39,7 @@
 .day {
     width: 60rpx;
     height: 60rpx;
-    color: #88d2ac;
+    color: #717171;
     font-size: 26rpx;
     font-weight: 200;
 }
@@ -50,12 +50,12 @@
     top: 0;
    
 }
-.pink-bg {
-    background-color: #ff629a;
+.main-theme-bg {
+    background-color: #3399FF;
     color: #fff;
 }
-.pink-bd {
-    border:1px solid #ff629a;
+.main-theme-bd {
+    border:1px solid #3399FF;
 }
 .purple-bg {
     background-color: #b8b8f1;
