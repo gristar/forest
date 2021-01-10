@@ -9,15 +9,20 @@ var app = getApp();
 var that;
 Page({
   data: {
-    items: [
-      { name: '活动', value: '活动', checked: 'true' },
+    todoTypes: [
+      { name: '喂食', value: '喂食', checked: 'true' },
+      { name: '清理', value: '清理' },
+      { name: '洗澡', value: '洗澡' },
       { name: '疫苗', value: '疫苗' },
-      { name: '就诊', value: '就诊' },
-      { name: '洗澡', value: '洗澡' }
+      { name: '就诊', value: '就诊' }
+    ],
+    todoDate: util.curYearMonthDay(),
+    todoTime: util.curTime(),
+    todeTargets: [
+      { name: '猫', value: '猫', checked: 'true' },
+      { name: '狗', value: '狗' }
     ],
     currentTime: Date.now(),//util.formatTime(new Date),//此处为时间戳，如果要显示当前时间用后者
-    //date: '2017-6-12',
-    time: '2017-6-12 17:12',
     writeDiary: false,
     loading: false,
     windowHeight: 0,
@@ -196,6 +201,24 @@ Page({
   closeAddLayer: function () {
     that.setData({
       modifyDiarys: false
+    })
+  },
+  bindTodoDateChange: function (e) {
+    this.setData({
+      todoDate: e.detail.value,
+      [`formData.todoDate`]: e.detail.value
+    })
+  },
+  bindTodoTimeChange: function (e) {
+    this.setData({
+      todoTime: e.detail.value,
+      [`formData.todoTime`]: e.detail.value
+    })
+  },
+  tapAddDialogButton: function (e) {
+    console.log(e.detail)
+    this.setData({
+      writeDiary: false
     })
   }
 })

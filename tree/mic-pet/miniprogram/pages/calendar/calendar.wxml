@@ -1,5 +1,5 @@
 
-<view class="flex box box-tb box-align-center bd-bottom">
+<view class="flex box box-tb box-align-center">
     <view class="calendar main-theme-color box box-tb">
         <view class="top-handle fs28 box box-lr box-align-center box-pack-center">
             <view class="prev box box-rl" bindtap="handleCalendar" data-handle="prev">

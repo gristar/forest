@@ -27,10 +27,16 @@ function formatTime(date) {
   function curYearMonthDay(date = new Date()) {
     return [curYear(date), curMonth(date), today(date)].map(formatNumber).join('-')
   }
+  function curTime(date = new Date()) {
+    const hour = date.getHours()
+    const minute = date.getMinutes()
+    return [hour, minute].map(formatNumber).join(':')
+  }
   module.exports = {
     formatTime,
     today,
     curMonth,
     curYearMonthDay,
+    curTime
   }
   

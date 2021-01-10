@@ -10,7 +10,6 @@
         bindinput="listenerTitleInput" />
       <input name="address" class="memo-input bd-bottom" type="text" placeholder="请输入地点" placeholder-style="color:gray"
         bindinput="listenerAddressInput" />
-
       <view class="flex-row">
         <text class="flex-row">日期</text>
         <view class="flex-row">
@@ -22,28 +21,19 @@
       </view>
       <view class="flex-row">
         <text>时间</text>
-
         <picker mode="time" value="{{time}}" start="06:00" end="24:00" bindchange="listenerTimePickerSelected">
           <text>{{time}}</text>
         </picker>
-
       </view>
       <input name="note" class="memo-input bd-bottom" type="text" placeholder="请输入备注" placeholder-style="color:gray"
         bindinput="listenerNoteInput" />
-
-
     </view>
-
-
     <view class="box box-lr box-pack-between box-align-center wd100">
       <!--button formType属性两个可选值submit, reset分别会触发form的submit，reser事件 -->
       <button formType="submit" type="primary" class="wd30">提交</button>
       <button formType="reset" type="warn" class="wd30">重置</button>
     </view>
-
   </form>
-
-
 </view>
 <!--<block wx:for-items="{{result}}">
     <view style="width:100%; height: 50rpx"></view>

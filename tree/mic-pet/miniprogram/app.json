@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/memo/memo",
+    "pages/todo/todo",
     "pages/index/index",
     "pages/calendar/calendar"
   ],
@@ -18,19 +18,19 @@
     "list": [
       {
         "pagePath": "pages/calendar/calendar",
-        "text": "日历",
+        "text": "今日",
         "iconPath": "./image/icons/日历.png",
         "selectedIconPath": "./image/icons/日历 (1).png"
       },
       {
-        "pagePath": "pages/memo/memo",
-        "text": "预约",
+        "pagePath": "pages/todo/todo",
+        "text": "待处理",
         "iconPath": "./image/icons/预约.png",
         "selectedIconPath": "./image/icons/预约 (1).png"
       },
       {
         "pagePath": "pages/index/index",
-        "text": "我的",
+        "text": "信息",
         "iconPath": "./image/icons/我的.png",
         "selectedIconPath": "./image/icons/我的 (1).png"
       }

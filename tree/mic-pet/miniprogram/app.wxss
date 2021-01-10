@@ -1,4 +1,3 @@
-
 /**app.wxss**/
 .container {
   display: flex;
@@ -7,7 +6,7 @@
   justify-content: space-between;
   padding: 60rpx 0;
   box-sizing: border-box;
-} 
+}
 
 
 /* for calendar*/
@@ -20,239 +19,160 @@ page {
 }
 
 .box {
-    display: flex;
+  display: flex;
 }
 
 .box-lr {
-    flex-direction: row;
+  flex-direction: row;
 }
 
 .box-rl {
-    flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
 
 .box-tb {
-    flex-direction: column;
+  flex-direction: column;
 }
 
 .box-bt {
-    flex-direction: column-reverse;
+  flex-direction: column-reverse;
 }
 
 .box-pack-center {
-    justify-content: center;
+  justify-content: center;
 }
 
 .box-pack-start {
-    justify-content: flex-start;
+  justify-content: flex-start;
 }
 
 .box-pack-end {
-    justify-content: flex-end;
+  justify-content: flex-end;
 }
 
 .box-pack-between {
-    justify-content: space-between;
+  justify-content: space-between;
 }
 
 .box-pack-around {
-    justify-content: space-around;
+  justify-content: space-around;
 }
 
 .box-align-center {
-    align-items: center;
+  align-items: center;
 }
 
 .box-align-start {
-    align-items: flex-start;
+  align-items: flex-start;
 }
 
 .box-align-end {
-    align-items: flex-end;
+  align-items: flex-end;
 }
 
 .self-align-center {
-    align-self: center;
-    margin: 0 auto;
+  align-self: center;
+  margin: 0 auto;
 }
 
 .self-align-start {
-    align-self: flex-start;
+  align-self: flex-start;
 }
 
 .self-align-end {
-    align-self: flex-end;
+  align-self: flex-end;
 }
 
 .self-align-stretch {
-    align-self: stretch;
+  align-self: stretch;
 }
 
 .box-wrap {
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .box-nowrap {
-    flex-wrap: nowrap;
+  flex-wrap: nowrap;
 }
 
 .flex {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .shrink {
-    flex-shrink: 1;
+  flex-shrink: 1;
 }
+
 .bg {
   background-image: linear-gradient(to bottom, #faefe7, #ffcbd7);
   overflow: hidden;
 }
+
 .brown-color {
   color: #784344;
 }
+
 .pink-color {
   color: #ff629a;
 }
+
 .main-theme-color {
   color: #3399FF;
 }
+
 .white-color {
   color: #fff;
 }
+
 .fs24 {
   font-size: 24rpx;
 }
+
 .fs28 {
   font-size: 28rpx;
 }
+
 .fs32 {
   font-size: 32rpx;
 }
+
 .fs36 {
   font-size: 36rpx;
 }
-/*we ui*/
-
-.weui-dialog {
-  position: fixed;
-  z-index: 5000;
-  width: 80%;
-  max-width: 300px;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  background-color: #FFFFFF;
-  text-align: center;
-  border-radius: 3px;
-  overflow: hidden;
-}
-.weui-dialog__hd {
-  padding: 1.3em 1.6em 0.5em;
-}
-.weui-dialog__title {
-  font-weight: 400;
-  font-size: 18px;
-}
-.weui-dialog__bd {
-  padding: 0 1.6em 0.8em;
-  min-height: 40px;
-  font-size: 15px;
-  line-height: 1.3;
-  word-wrap: break-word;
-  word-break: break-all;
-  color: #999999;
-}
-.weui-dialog__bd:first-child {
-  padding: 2.7em 20px 1.7em;
-  color: #353535;
-}
-.weui-dialog__ft {
-  position: relative;
-  line-height: 48px;
-  font-size: 18px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-}
-.weui-dialog__ft:after {
-  content: " ";
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  height: 1px;
-  border-top: 1px solid #D5D5D6;
-  color: #D5D5D6;
-  -webkit-transform-origin: 0 0;
-          transform-origin: 0 0;
-  -webkit-transform: scaleY(0.5);
-          transform: scaleY(0.5);
-}
-.weui-dialog__btn {
-  display: block;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-          flex: 1;
-  color: #3CC51F;
-  text-decoration: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  position: relative;
-}
-.weui-dialog__btn:active {
-  background-color: #EEEEEE;
-}
-.weui-dialog__btn:after {
-  content: " ";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 1px;
-  bottom: 0;
-  border-left: 1px solid #D5D5D6;
-  color: #D5D5D6;
-  -webkit-transform-origin: 0 0;
-          transform-origin: 0 0;
-  -webkit-transform: scaleX(0.5);
-          transform: scaleX(0.5);
-}
-.weui-dialog__btn:first-child:after {
-  display: none;
-}
-.weui-dialog__btn_default {
-  color: #353535;
-}
-.weui-dialog__btn_primary {
-  color: #3cc51f;
-}
-.weui-mask {
-    position: fixed;
-    z-index: 1000;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
-}
-
 
 /*self*/
-.wd25{
-    width: 25%;   
+.wd25 {
+  width: 25%;
 }
-.wd30{
-    width: 30%;   
+
+.wd30 {
+  width: 30%;
 }
-.wd50{
-    width: 50%;   
+
+.wd50 {
+  width: 50%;
 }
-.wd100{
-    width: 100%;
+
+.wd100 {
+  width: 100%;
 
 }
-.pd25{ padding: 25rpx}
-.bd-bottom{border-bottom: 1px solid #7e7e7e;}
-.flex-row {
-  flex-direction:row;justify-content: space-between;
+
+.pd25 {
+  padding: 25rpx
 }
-switch{ width: 90%; height: 90%; align-items: center}
+
+.bd-bottom {
+  border-bottom: 1px solid #7e7e7e;
+}
+
+.flex-row {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+switch {
+  width: 90%;
+  height: 90%;
+  align-items: center
+}
